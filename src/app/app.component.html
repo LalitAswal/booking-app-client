@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Booking App</title>
+</head>
+<body>
+  <h2>Reserve Seats</h2>
+<form  #bookingForm="ngForm" (ngSubmit)="BookingStatus(bookingForm.value)">
+  <label for="numberOfSeats" > Enter the Number of Seats to book:</label>
+  <input type="number"  ngModel name="numberOfSeats" required (input)="clearErrorMessage()">
+  <br /><br />
+  <button type="submit">Reserve</button>
+</form>
+<div *ngIf="errorMessage" class="error-message">
+  {{ errorMessage }}
+</div>
+<h2>Reserved Seats are</h2>
+<ul *ngIf="result !== undefined">
+  <li *ngFor="let seatNumber of result">
+    {{ seatNumber }}
+  </li>
+</ul>
+
+
+</body>
+</html>
